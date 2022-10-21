@@ -1,4 +1,4 @@
-package mymethod
+package myfunction
 
 import "fmt"
 
