@@ -47,12 +47,15 @@
   - docker-compose up -d --no-deps --build <service_name>
 ```
 
-#### import private repo	(https://medium.com/swlh/go-modules-with-private-git-repository-3940b6835727)
+#### import private repo through ssh(https://medium.com/swlh/go-modules-with-private-git-repository-3940b6835727)
 ```
-  - ~/.gitconfig file should only have url like given below format
-    [url “https://<github-user-name>:<private-token>@github.com”]
-      insteadOf = https://github.com
+  - This command must be ran only once in a server to setup github through ssh
+    - git config --global --add url."git@github.com:".insteadOf "https://github.com/"         
+  - Now check ~/.gitconfig file should only have url like given below format
+    [url "git@github.com:"]
+        insteadOf = https://github.com/
   - go env -w GOPRIVATE=github.com/<github-user-name>
-  - git config --global --add url."https://<github-user-name>:<private-token>@github.com".insteadOf "https://github.com/"
   - go get github.com/<github-user-name>/<repo-name>
+  - go mod tidy
+  - go mod vendor
 ```
